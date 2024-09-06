@@ -16,6 +16,12 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+
+    profilePic: {
+        type: String,
+        default:
+            'https://banner2.cleanpng.com/20180810/biz/3efdae17d419cdcf3886d344b989ea45.webp'
     }
 }, {timestamps: true});
 
