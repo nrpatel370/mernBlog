@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
-    profilePic: {
+    profilePicture: {
         type: String,
         default:
             'https://banner2.cleanpng.com/20180810/biz/3efdae17d419cdcf3886d344b989ea45.webp'

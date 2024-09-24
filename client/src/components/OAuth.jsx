@@ -11,9 +11,9 @@ const OAuth = () => {
     const auth = getAuth(app);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const provider = new GoogleAuthProvider();
+    
     const handleGoogleClick = async () => {
-       
+        const provider = new GoogleAuthProvider();
         provider.setCustomParameters({prompt: 'select_account'})
         try{
             const resultsFromGoogle = await signInWithPopup(auth, provider)
@@ -23,7 +23,7 @@ const OAuth = () => {
                 body: JSON.stringify({
                     name: resultsFromGoogle.user.displayName,
                     email: resultsFromGoogle.user.email,
-                    googlePhotoUrl: resultsFromGoogle.user.photoURL
+                    googlePhotoUrl: resultsFromGoogle.user.photoURL,
                 })
             })
             const data = await res.json()
