@@ -4,6 +4,7 @@ import { Link, useNavigate} from 'react-router-dom'
 import { signInSuccess, signInFailure, signInStart } from '../app/user/userSlice'
 import { useDispatch, useSelector} from 'react-redux';
 import OAuth from '../components/OAuth';
+import themeSlice from '../app/theme/themeSlice';
 
 
 const SignIn = () => {
@@ -12,6 +13,7 @@ const SignIn = () => {
   const {loading, error: errorMessage} =  useSelector(state=>state.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {theme} = useSelector(state=>state.theme)
 
   const handleChange = (event) => {
     setFormData({
@@ -82,7 +84,7 @@ const SignIn = () => {
                 />
             </div>
 
-            <Button gradientDuoTone='tealToLime' type='submit' className='text-gray bold' disabled={loading}>{
+            <Button gradientDuoTone={theme !== 'light'? 'purpleToPink':'tealToLime'} type='submit' className='text-gray bold' disabled={loading}>{
               loading ? (
               <>
                 <Spinner size='sm'/> 
@@ -94,7 +96,7 @@ const SignIn = () => {
           </form>
 
           <div className='flex gap-2 text-sm mt-5'>
-            <span>Don'thHave an account?</span>
+            <span>Don't Have an account?</span>
             <Link to="/sign-up" className='text-blue-500'>Sign Up</Link>
           </div>
 
